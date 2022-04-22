@@ -1,0 +1,85 @@
+//показать всех
+GET http://localhost:3000/movies/
+Accept: application/json,
+Content-Type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYxMGM2NTBjMjlhNWIwZWNiNmU0YTciLCJpYXQiOjE2NTA1MjczNDZ9.T609KCFuEe56bZxq8l8l35ZWRii9NcjG7FZLXd9H0ts; Max-Age=5184; Path=/; Expires=Thu, 21 Apr 2022 09:15:30 GMT; HttpOnly; Secure; SameSite=None
+####
+//создать нового
+POST http://localhost:3000/signup/
+Content-Type: application/json
+
+{
+"name": "N",
+"email":"new3@yandex.ru",
+"password":"123"
+}
+
+
+# войти в учетку
+##########
+POST http://localhost:3000/signin/
+Content-Type: application/json
+
+{
+
+"email":"new3@yandex.ru",
+"password":"123"
+
+}
+######
+//показать себя
+GET http://localhost:3000/users/me/
+Accept: application/json,
+Content-Type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYxNTc1NzgxODU2NDVlNDFjZGIxYzUiLCJpYXQiOjE2NTA1NjQyMDB9.9dSgh6wPYmIkGZP-w9eTn20zb3MvJqvdQJtEgaZvZN8; Max-Age=5184; Path=/; Expires=Thu, 21 Apr 2022 19:29:44 GMT; HttpOnly; Secure; SameSite=None
+####
+//АПДЕЙТ ЮЗЕРА
+PATCH  http://localhost:3000/users/me/
+Accept: application/json,
+Content-Type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYxNTc1NzgxODU2NDVlNDFjZGIxYzUiLCJpYXQiOjE2NTA1NjQyMDB9.9dSgh6wPYmIkGZP-w9eTn20zb3MvJqvdQJtEgaZvZN8; Max-Age=5184; Path=/; Expires=Thu, 21 Apr 2022 19:29:44 GMT; HttpOnly; Secure; SameSite=None
+
+{
+
+"name": "vasya1",
+"email": "ab@ya.ru"
+
+}
+####
+
+
+
+# создать фильм
+##########
+POST http://localhost:3000/movies
+Accept: application/json,
+Content-Type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOTdmNGMzZGRlMTkyNjQxOTViMjEiLCJpYXQiOjE2NTA2Mjg2MjV9.xzqTwz4cS8CsPCHZob7bRgT6FE-e9TJN_ex5yKav5p8; Max-Age=5184; Path=/; Expires=Fri, 22 Apr 2022 13:23:29 GMT; HttpOnly; Secure; SameSite=None
+
+
+{
+
+"country":"mongolia4444",
+"director":"spilberg",
+"duration":"100",
+"year":"2022",
+"description":"nice film",
+"image":"https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg",
+"trailerLink":"https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg",
+"thumbnail":"https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg",
+"movieId":"222",
+"nameRU":"Титаник твою мать",
+"nameEN":"Titanic tvoyu mat"
+
+
+}
+
+
+#############
+
+DELETE  http://localhost:3000/movies/6262a4f9bc600448773341dc
+Accept: application/json,
+Content-Type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOTdmNGMzZGRlMTkyNjQxOTViMjEiLCJpYXQiOjE2NTA2Mjg2MjV9.xzqTwz4cS8CsPCHZob7bRgT6FE-e9TJN_ex5yKav5p8; Max-Age=5184; Path=/; Expires=Fri, 22 Apr 2022 13:23:29 GMT; HttpOnly; Secure; SameSite=None
+
+
