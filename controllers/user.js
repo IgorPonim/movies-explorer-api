@@ -27,10 +27,10 @@ exports.updateUserInfo = (req, res, next) => {
       res.status(200).send(user);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err.name === 'CastError' || err.name === 'ValidationError') {
         next(new BadRequestError('Неверный тип данных.'));
-      } else if (err.name === 'ValidationError') {
-        next(new BadRequestError('Неверный тип данных.'));
+      } else if (err.codeName === 'DuplicateKey') {
+        next(new ConflictError('Указанный Email уже используется другим пользователем.'));
       } else {
         next(err);
       }

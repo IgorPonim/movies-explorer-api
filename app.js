@@ -5,12 +5,15 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet');
 
 const { errors } = require('celebrate');
 
 const PUBLIC_FOLDER = path.join(__dirname, 'public');
 const { errorLogger } = require('./middlewares/logger');
 const mainErrorHadler = require('./middlewares/mainErrorHandler');
+
+const limiter = require('./middlewares/limit');
 
 const app = express();
 
@@ -33,6 +36,8 @@ app.use((req, res, next) => {
 });
 
 app.use(requestLogger);
+app.use(limiter);
+app.use(helmet());
 
 app.post('/signup', signUp, createUser);
 app.post('/signin', signIn, login);
