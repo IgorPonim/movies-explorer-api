@@ -1,7 +1,7 @@
 const { movie } = require('../models/movieModel');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
-const UnathorizedError = require('../errors/UnathorizedError');
+const ForbiddenError = require('../errors/ForbiddenError');
 
 exports.getMovies = (req, res, next) => {
   movie.find({})
@@ -50,17 +50,22 @@ exports.createMovies = (req, res, next) => {
     });
 };
 
+//  не был знаком с методом orFail, красиво!
 module.exports.deleteMovies = (req, res, next) => {
-  movie.findByIdAndDelete(req.params.movieId)
+  movie.findById(req.params.movieId)
+    .orFail(new NotFoundError('Фильм по _id не найден'))
     .then((film) => {
-      if (!film) {
-        throw new NotFoundError('Фильм не найден');
-      } else if (film.owner.toString() !== req.user._id) {
-        throw new UnathorizedError('Нельзя удалять чужие фильмы!');
+      if (film.owner.toString() === req.user._id) {
+        return film.remove()
+          .then(() => res.status(200).send({ message: 'Фильм удален' }));
       }
 
-      movie.findByIdAndDelete(req.params.movieId)
-        .then(() => res.status(200).send({ message: 'Фильм удален' }));
+      throw new ForbiddenError('Нельзя удалять чужой фильм');
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.kind === 'ObjectId') {
+        next(new BadRequestError('Невалидный id'));
+      }
+      next(err);
+    });
 };

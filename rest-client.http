@@ -1,5 +1,5 @@
 //показать всех
-GET http://localhost:3000/movies/
+GET http://localhost:3000/movies
 Accept: application/json,
 Content-Type: application/json
 Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYxMGM2NTBjMjlhNWIwZWNiNmU0YTciLCJpYXQiOjE2NTA1MjczNDZ9.T609KCFuEe56bZxq8l8l35ZWRii9NcjG7FZLXd9H0ts; Max-Age=5184; Path=/; Expires=Thu, 21 Apr 2022 09:15:30 GMT; HttpOnly; Secure; SameSite=None
@@ -9,9 +9,11 @@ POST http://localhost:3000/signup/
 Content-Type: application/json
 
 {
-"name": "N",
-"email":"new3@yandex.ru",
+
+"name": "vasyan",
+"email":"new222@yandex.ru",
 "password":"123"
+
 }
 
 
@@ -22,7 +24,7 @@ Content-Type: application/json
 
 {
 
-"email":"new3@yandex.ru",
+"email":"new222@yandex.ru",
 "password":"123"
 
 }
@@ -42,7 +44,7 @@ Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYxNTc1NzgxODU2N
 {
 
 "name": "vasya1",
-"email": "ab@ya.ru"
+"email": "abc@yandex.ru"
 
 }
 ####
@@ -77,7 +79,7 @@ Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOTdmNGMzZGRlM
 
 #############
 
-DELETE  http://localhost:3000/movies/6262a4f9bc600448773341dc
+DELETE  http://localhost:3000/movies/62628be07ece136fad4d496b
 Accept: application/json,
 Content-Type: application/json
 Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOTdmNGMzZGRlMTkyNjQxOTViMjEiLCJpYXQiOjE2NTA2Mjg2MjV9.xzqTwz4cS8CsPCHZob7bRgT6FE-e9TJN_ex5yKav5p8; Max-Age=5184; Path=/; Expires=Fri, 22 Apr 2022 13:23:29 GMT; HttpOnly; Secure; SameSite=None
