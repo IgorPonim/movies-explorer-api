@@ -20,6 +20,12 @@ const app = express();
 app.use(express.static(PUBLIC_FOLDER));
 const { port = 3000 } = process.env;
 
+// настройки корс можно зайти с лююбого домена, чтобы работал его надо  в правильное место поставить
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
+
 const { routes } = require('./routes/routes');
 const auth = require('./middlewares/auth');
 
@@ -50,11 +56,6 @@ app.use(routes);
 app.use(auth);
 
 app.use(errorLogger);
-// настройки корс можно зайти с лююбого домена
-app.use(cors({
-  origin: true,
-  credentials: true,
-}));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
